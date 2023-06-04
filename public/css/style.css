@@ -1,0 +1,59 @@
+.fakeimg {
+    height: 200px;
+    background: #aaa;
+}
+
+/* Custom theme */
+body {
+    background-color: #0f355c;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+.jumbotron {
+    background-color: #6c757d;
+    color: #fff;
+    margin-bottom: 0;
+    animation: jumbotronAnim 1s ease-in-out infinite alternate;
+}
+
+@keyframes jumbotronAnim {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.02);
+    }
+}
+
+.navbar {
+    background-color: #343a40;
+}
+
+.navbar-brand,
+.nav-link {
+    color: #fff;
+}
+
+.nav-link {
+    transition: color 0.3s;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: #e9ecef;
+}
+
+.container {
+    margin-top: 30px;
+}
+
+h2 {
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.fakeimg {
+    background: #ddd;
+}
