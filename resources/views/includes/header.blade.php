@@ -18,8 +18,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/datauser') }}">Data Users</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ url('/contact') }}">Contact Me</a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/datatables-user') }}">Data Hobi</a>
                         </li>
                     @endauth
                 </ul>

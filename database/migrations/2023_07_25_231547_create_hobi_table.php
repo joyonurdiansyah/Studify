@@ -15,6 +15,9 @@ class CreateHobiTable extends Migration
     {
         Schema::create('hobi', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('email')->unique();
+            $table->string('film_kesukaan');
             $table->timestamps();
         });
     }

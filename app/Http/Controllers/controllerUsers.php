@@ -29,7 +29,7 @@ class controllerUsers extends Controller
             ->orWhere('no_hp', 'LIKE', "%$keyword%")
             ->orWhere('alamat', 'LIKE', "%$keyword%")
             ->orWhere('email', 'LIKE', "%$keyword%")
-            ->get();
+            ->paginate(10);
 
         return view('pages.users', compact('data'));
     }
@@ -97,5 +97,13 @@ class controllerUsers extends Controller
         $dataUser = User::find($id);
         $dataUser->delete();
         return redirect()->back()->with('success', 'data telah terhapus');
+    }
+
+    // break point untuk data tables dan jquery
+
+    public function indexDataTables()
+    {
+        $users = User::all();
+        return view('datatables.index', compact('users'));
     }
 }

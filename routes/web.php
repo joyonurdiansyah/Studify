@@ -38,3 +38,7 @@ Route::post('/update-user', [ControllerUsers::class, 'update_data_users'])->name
 
 // hapus data users
 Route::get('/hapus-user/{id}', [ControllerUsers::class, 'hapus_user'])->name('hapus.data.user');
+
+
+// break point untuk route data tables dan jquery
+Route::get('/datatables-user', [controllerUsers::class, 'indexDataTables'])->name('data.hobi');
