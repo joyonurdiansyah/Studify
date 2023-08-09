@@ -106,4 +106,10 @@ class controllerUsers extends Controller
         $users = User::all();
         return view('datatables.index', compact('users'));
     }
+
+    // template mazer
+    public function indexHobies()
+    {
+        return view('datatables.hobi');
+    }
 }
