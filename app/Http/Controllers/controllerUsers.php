@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmail;
 
 class controllerUsers extends Controller
 {
@@ -108,8 +110,29 @@ class controllerUsers extends Controller
     }
 
     // template mazer
-    public function indexHobies()
+    public function indexObat()
     {
-        return view('datatables.hobi');
+        return view('datatables.obat');
+    }
+
+    // auth & email settings belum dipake
+    public function sendEmail(Request $request)
+    {
+        $userEmail = $request->input('email');
+
+        $user = User::where('email', $userEmail)->first();
+
+        if (!$user) {
+            return "Email not found in users table.";
+        }
+
+        $emailContent = 'Pesan reset password Anda disini';
+        $data = [
+            'resetLink' => route('password.reset', ['token' => 'TOKEN_HERE']),
+        ];
+
+        Mail::to($userEmail)->send(new SendEmail($emailContent, $data));
+
+        return "Email sent successfully.";
     }
 }

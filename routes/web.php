@@ -48,12 +48,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/datatables-user', [controllerUsers::class, 'indexDataTables'])->name('data.hobi');
 
     // sedang percobaan untuk templating data tables
-    Route::get('/datatables-hobi', [controllerUsers::class, 'indexHobies'])->name('index.hobi');
+    Route::get('/datatables-obat', [controllerUsers::class, 'indexObat'])->name('index.obat');
 });
 
 
-// email
-Route::get('/home-email', [EmailController::class, 'getEmail'])->name('index.email');
+// auth email
+Route::post('/send-reset-email', [controllerUsers::class, 'sendEmail'])->name('send.reset.email');
 
 
 Route::middleware(['guest'])->group(function () {
