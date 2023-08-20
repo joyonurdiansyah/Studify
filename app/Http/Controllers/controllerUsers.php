@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\dataKaryawan;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendEmail;
@@ -103,36 +104,17 @@ class controllerUsers extends Controller
 
     // break point untuk data tables dan jquery
 
-    public function indexDataTables()
+    public function getDataKaryawan()
     {
         $users = User::all();
-        return view('datatables.index', compact('users'));
+        return view('karyawan.index', compact('users'));
     }
+
 
     // template mazer
-    public function indexObat()
+    public function indexKaryawan()
     {
-        return view('datatables.obat');
-    }
-
-    // auth & email settings belum dipake
-    public function sendEmail(Request $request)
-    {
-        $userEmail = $request->input('email');
-
-        $user = User::where('email', $userEmail)->first();
-
-        if (!$user) {
-            return "Email not found in users table.";
-        }
-
-        $emailContent = 'Pesan reset password Anda disini';
-        $data = [
-            'resetLink' => route('password.reset', ['token' => 'TOKEN_HERE']),
-        ];
-
-        Mail::to($userEmail)->send(new SendEmail($emailContent, $data));
-
-        return "Email sent successfully.";
+        $karyawan = dataKaryawan::all();
+        return view('karyawan.data-karyawan', compact('karyawan'));
     }
 }

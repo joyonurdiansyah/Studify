@@ -45,10 +45,22 @@ Route::middleware(['auth'])->group(function () {
 
 
     // break point untuk route data tables dan jquery
-    Route::get('/datatables-user', [controllerUsers::class, 'indexDataTables'])->name('data.hobi');
+    Route::get('/datatables-user', [controllerUsers::class, 'getDataKaryawan'])->name('data.hobi');
+    Route::get('/karyawan-dashboard', [controllerUsers::class, 'indexKaryawan'])->name('data.karyawan.dashboard');
 
-    // sedang percobaan untuk templating data tables
-    Route::get('/datatables-obat', [controllerUsers::class, 'indexObat'])->name('index.obat');
+
+    // data karyawan
+    // route menu karyawan belum dipake 
+    Route::get('/data-karyawan', [controllerUsers::class, 'getDataKaryawan'])->name('index.karyawan');
+    Route::post('/tambah-karyawan', [controllerUsers::class, 'tambahKaryawan'])->name('tambah.karyawan');
+    Route::get('/edit-karyawan/{id}', [controllerUsers::class, 'editKaryawan'])->name('edit.karyawan');
+    Route::post('/update-karyawan', [controllerUsers::class, 'getDataKaryawan'])->name('update.karyawan');
+    Route::get('/delete-karyawan/{id}', [controllerUsers::class, 'deleteKaryawan'])->name('delete.karyawan');
+    // endroutekaryawan
+
+
+    // route belum dipake 
+
 });
 
 

@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateDataKaryawanTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('data_karyawan', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama', 255);
+            $table->string('email', 255);
+            $table->string('nomor_telepon', 15);
+            $table->string('kota', 255);
+            $table->string('status', 50);
+            $table->string('foto', 255)->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('data_karyawan');
+    }
+}
