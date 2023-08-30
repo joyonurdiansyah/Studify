@@ -11,8 +11,7 @@
     <link rel="shortcut icon" href="{{ asset('template/assets/images/logo/joy.png') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('template/assets/images/logo/joy.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ asset('template/assets/css/shared/iconly.css') }}">
-
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
 </head>
 
 {{-- beresin asset dibawah dulu --}}
@@ -216,14 +215,17 @@
     </div>
     <script src="{{ asset('template/assets/js/bootstrap.js') }}"></script>
     <script src="{{ asset('template/assets/js/app.js') }}"></script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#userstable').DataTable();
+            $('#userstable').DataTable({
+                "responsive": true
+            });
         });
     </script>
+
 
 </body>
 

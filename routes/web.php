@@ -22,9 +22,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Auth::routes(['register' => false]);
+
 Route::middleware(['auth'])->group(function () {
     // ini router home
     Route::get('/home', 'HomeController@index')->name('home');
+    // Route::get('/register', 'HomeController@registerAkun')->name('register');
 
     // ini router users
     Route::get('/datauser', [controllerUsers::class, 'indexuser'])->name('datausers');

@@ -9,7 +9,7 @@
         <div class="col-lg-5 col-12">
             <div id="auth-left">
                 <div class="auth-logo">
-                    <a href="{{ route('home') }}"><img src="{{ asset('template/assets/images/logo/joy.png') }}"
+                    <a href="{{ route('login') }}"><img src="{{ asset('template/assets/images/logo/joy.png') }}"
                             alt="Logo"></a>
                 </div>
                 <h1 class="auth-title">Forgot Password</h1>
