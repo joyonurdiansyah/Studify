@@ -110,6 +110,23 @@ class controllerUsers extends Controller
         return view('karyawan.index', compact('users'));
     }
 
+    // response get with jquery
+    public function dataKaryawan()
+    {
+        $karyawan = dataKaryawan::all();
+        $response = ['data' => $karyawan, 'status' => 'success', 'code' => 200];
+        return response()->json($response);
+    }
+
+    public function tambahPegawai(Request $request)
+    {
+        // jquery code disini
+    }
+
+
+
+    // 
+
 
     // template mazer
     public function indexKaryawan()

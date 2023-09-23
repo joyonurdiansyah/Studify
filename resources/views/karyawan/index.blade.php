@@ -15,19 +15,14 @@
                 <tr>
                     <th>Nama</th>
                     <th>Email</th>
-                    <th>Nomol Telpon</th>
+                    <th>Nomor Telpon</th>
                     <th>Kota</th>
-                    <th>Foto Karyawan</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                {{-- isi di jquery --}}
             </tbody>
         </table>
     </div>
@@ -92,11 +87,49 @@
 
 @push('after-script')
     {{-- data tables --}}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#userstable').DataTable();
+            console.log('test')
+            $('#userstable').DataTable({
+                processing: true,
+                serverSide: false,
+                ajax: '/data-karyawan',
+                columns: [{
+                        data: 'nama',
+                        name: 'nama'
+                    },
+                    {
+                        data: 'email',
+                        name: 'email'
+                    },
+                    {
+                        data: 'nomor_telepon',
+                        name: 'nomor_telepon'
+                    },
+                    {
+                        data: 'kota',
+                        name: 'kota'
+                    },
+                    {
+                        data: 'status',
+                        name: 'status',
+                        render: function(data, type, row) {
+                            var badgeClass = data === 'Aktif' ? 'badge-success' : 'badge-danger';
+                            return '<span class="badge ' + badgeClass + '">' + data + '</span>';
+                        }
+                    },
+                    {
+                        render: function(data, type, row) {
+                            var btn = '<button type="button" class="btn btn-success">Edit</button>';
+                            btn += '<button type="button" class="btn btn-danger">Delete</button>';
+                            return btn;
+                        }
+                    }
+                ]
+            });
         });
     </script>
 @endpush
