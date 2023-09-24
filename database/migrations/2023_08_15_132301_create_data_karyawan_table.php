@@ -17,7 +17,7 @@ class CreateDataKaryawanTable extends Migration
             $table->id();
             $table->string('nama', 255);
             $table->string('email', 255);
-            $table->string('nomor_telepon', 15);
+            $table->string('nomor_telepon', 50);
             $table->string('kota', 255);
             $table->string('status', 50);
             $table->string('foto', 255)->nullable();

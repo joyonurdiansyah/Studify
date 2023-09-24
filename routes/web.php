@@ -18,6 +18,8 @@ use App\Http\Controllers\EmailController;
 
 
 Route::get('/data-karyawan', [controllerUsers::class, 'dataKaryawan'])->name('data.karyawan');
+Route::post('/data-karyawan/simpan-data', [controllerUsers::class, 'tambahPegawai'])->name('data.simpan.karyawan');
+Route::get('/data-karyawan/edit-data/{id}', [controllerUsers::class, 'editPegawai'])->name('data.edit.pegawai');
 
 
 Route::get('/', function () {

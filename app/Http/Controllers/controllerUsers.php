@@ -8,6 +8,8 @@ use App\dataKaryawan;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendEmail;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
 
 class controllerUsers extends Controller
 {
@@ -120,7 +122,28 @@ class controllerUsers extends Controller
 
     public function tambahPegawai(Request $request)
     {
-        // jquery code disini
+        // dd($request->all());
+        $extension_gambar = $request->file('foto')->extension();
+        $format_foto = date('ymdhis').'.'.$extension_gambar;
+        Storage::putFileAs('/public/foto',$request->file('foto'),$format_foto);
+
+        $pegawai = new dataKaryawan();
+        $pegawai->nama = $request->nama;
+        $pegawai->email = $request->email;
+        $pegawai->nomor_telepon = $request->nomor_telepon;
+        $pegawai->kota = $request->kota;
+        $pegawai->status = "Aktif";
+        // 
+        $pegawai->foto = $format_foto;
+        $pegawai->save();
+
+        return Redirect::back()->with(['berhasil' => 'berhasil menambahkan pegawai']);
+    }
+
+    public function editPegawai ($id) {
+        $karyawan = dataKaryawan::where('id', $id)->first();
+        $response = ['data' => $karyawan, 'status' => 'success', 'code' => 200];
+        return response()->json($response);
     }
 
 
@@ -134,4 +157,5 @@ class controllerUsers extends Controller
         $karyawan = dataKaryawan::all();
         return view('karyawan.data-karyawan', compact('karyawan'));
     }
+    
 }
