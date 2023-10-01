@@ -149,9 +149,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script> --}}
-  
-
 
         $(document).ready(function() {
             console.log('test')
@@ -200,19 +197,26 @@
             });
         });
 
+        // modal belum muncul
         function myBtnUpdateData(id) {
-            $.ajax({
-                url: "/manajemen_user/" + id,
-                type: 'GET',
-                dataType: 'json',
-                success: function(res) {
-                    console.log('cekdata', res.data)
-                    $('#id').val(res.data.id);
-                    $('#name_up').val(res.data.name);
-                    $('#email_up').val(res.data.email);
-                    $('#no_hp_users_up').val(res.data.no_hp_users);
-                    $('#alamat_users_up').val(res.data.alamat_
-                    // belum selesai
-            }
+        $.ajax({
+        url: "/manajemen_user/" + id,
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            console.log('cekdata', res.data);
+            $('#id_karyawan').val(res.data.id);
+            $('#nama-karyawan').val(res.data.nama);
+            $('#email-karyawan').val(res.data.email);
+            $('#telpon-karyawan').val(res.data.nomor_telepon);
+            $('#kota-karyawan').val(res.data.kota);
+            $('#status-karyawan').val(res.data.status); 
+
+            $('#editModal').modal('show');
+        }
+    });
+}
+        
+
     </script>
 @endpush
